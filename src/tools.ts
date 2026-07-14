@@ -10,12 +10,18 @@ export type { ToolArg, ToolDef } from "./types.js";
 
 /**
  * The tool list is generated from the public OpenAPI spec (run `npm run
- * gen:tools`), so it can never drift from the real /v1 surface. Each tool maps
- * 1:1 to a read-only GET route on the EquateIt public API. This server is a thin
- * proxy: it forwards the caller's API key to /v1 and returns the JSON verbatim.
- * All access control, org-scoping and rate-limiting is enforced by /v1.
+ * gen:tools`), so it can never drift from the real /v1 surface. This server is a
+ * thin proxy: it forwards the caller's API key to /v1 and returns the JSON
+ * verbatim. All access control, org-scoping and rate-limiting is enforced by /v1.
+ *
+ * We expose GET routes ONLY. `callV1()` always issues a GET, so the generated
+ * write defs (POST create_*, bulk_invite_users, …) would silently GET the
+ * collection instead of writing — advertising an action the server can't perform.
+ * Filtering to `method === "GET"` keeps the advertised surface honest (read-only,
+ * org-scoped). Real write tools must be added with the correct HTTP method +
+ * destructive-action annotations + confirmation, not by dropping this filter.
  */
-export const TOOLS: ToolDef[] = GENERATED_TOOLS;
+export const TOOLS: ToolDef[] = GENERATED_TOOLS.filter((t) => t.method === "GET");
 
 function inputSchema(def: ToolDef) {
   const properties: Record<string, { type: string; description: string }> = {};

@@ -40,6 +40,27 @@ describe("buildUrl", () => {
   });
 });
 
+describe("TOOLS surface is read-only", () => {
+  it("exposes only GET tools (callV1 always GETs; write defs would silently mis-fire)", () => {
+    const nonGet = TOOLS.filter((t) => t.method !== "GET").map((t) => t.name);
+    expect(nonGet).toEqual([]);
+  });
+
+  it("does not advertise any write-named tools", () => {
+    const writeish = TOOLS.filter((t) =>
+      /^(create_|update_|delete_|bulk_|upload_|refresh_)/.test(t.name),
+    ).map((t) => t.name);
+    expect(writeish).toEqual([]);
+  });
+
+  it("still exposes the core read tools", () => {
+    const names = new Set(TOOLS.map((t) => t.name));
+    for (const n of ["get_me", "list_sessions", "get_session", "list_invoices"]) {
+      expect(names.has(n)).toBe(true);
+    }
+  });
+});
+
 describe("authHeader", () => {
   it("uses the Token scheme for org API keys (ei_live_ / ei_test_)", () => {
     expect(authHeader("ei_live_deadbeef00")).toBe("Token token=ei_live_deadbeef00");
