@@ -5,6 +5,14 @@ description: >-
   invoices, payments, lesson plans, bookings, earnings, and reports — through the
   ClassQuill MCP server / public API. Use when the user asks about their tutoring
   operations, scheduling, billing, or students/tutors in ClassQuill (or EquateIt).
+metadata:
+  openclaw:
+    requires:
+      env:
+        - EQUATEIT_API_KEY
+      bins:
+        - npx
+    primaryEnv: EQUATEIT_API_KEY
 ---
 
 # ClassQuill
