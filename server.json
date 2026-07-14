@@ -1,0 +1,35 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.EquateItAu/classquill-mcp",
+  "description": "Read-only MCP server for ClassQuill, a tutoring-business-management platform.",
+  "repository": {
+    "url": "https://github.com/EquateItAu/classquill-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.classquill.com/mcp"
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "equateit-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "Your ClassQuill API key (create one in the app under Settings -> Developers). Read-only for this server.",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true,
+          "name": "EQUATEIT_API_KEY"
+        }
+      ]
+    }
+  ]
+}
