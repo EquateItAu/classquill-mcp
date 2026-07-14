@@ -25,10 +25,18 @@ const KEY_RE = /^ei_(live|test)_[a-f0-9]+$/;
 // Public identity of this hosted MCP server, for OAuth discovery (Claude, etc.).
 const PUBLIC_MCP_URL = process.env.MCP_PUBLIC_URL ?? "https://mcp.classquill.com/mcp";
 const AUTH_SERVER = process.env.MCP_AUTH_SERVER ?? "https://api.classquill.com";
+// RFC 9728 forms the metadata URL by inserting the resource's path *after* the
+// well-known segment, so the endpoint for /mcp is /.well-known/oauth-protected-
+// resource/mcp. Claude's OAuth discovery hits this suffix path — point the 401's
+// WWW-Authenticate header at it. We also serve the bare path for lenient clients.
 const RESOURCE_METADATA_URL = new URL(
-  "/.well-known/oauth-protected-resource",
+  "/.well-known/oauth-protected-resource/mcp",
   PUBLIC_MCP_URL,
 ).toString();
+const PROTECTED_RESOURCE_METADATA = {
+  resource: PUBLIC_MCP_URL,
+  authorization_servers: [AUTH_SERVER],
+};
 
 interface Args {
   http: boolean;
@@ -64,10 +72,14 @@ function runHttp(port: number) {
 
   // OAuth 2.0 protected-resource metadata (RFC 9728) — tells MCP clients (Claude)
   // which authorization server to use. Its counterpart lives on the API host at
-  // /.well-known/oauth-authorization-server.
-  app.get("/.well-known/oauth-protected-resource", (_req, res) => {
-    res.json({ resource: PUBLIC_MCP_URL, authorization_servers: [AUTH_SERVER] });
-  });
+  // /.well-known/oauth-authorization-server. Served at BOTH the RFC-9728 suffix
+  // path (/…/mcp, what Claude requests) and the bare path (lenient clients).
+  app.get(
+    ["/.well-known/oauth-protected-resource/mcp", "/.well-known/oauth-protected-resource"],
+    (_req, res) => {
+      res.json(PROTECTED_RESOURCE_METADATA);
+    },
+  );
 
   app.post("/mcp", async (req: Request, res: Response) => {
     const auth = req.headers["authorization"];
