@@ -34,6 +34,19 @@ function inputSchema(def: ToolDef) {
 }
 
 /**
+ * Every tool here is a read-only GET proxied straight through to /v1 with no
+ * side effects on our side, so one static annotation set covers all of them:
+ * safe to retry (idempotent), never destructive, and interacting with the
+ * caller's live org data (open-world, not a closed local dataset).
+ */
+const READ_ONLY_ANNOTATIONS = {
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: true,
+} as const;
+
+/**
  * Build the absolute /v1 URL for a tool call. Pure + exported for unit tests.
  * Path args fill `{...}` segments; remaining args become query params (blank /
  * null / undefined values are skipped). Throws if a required path arg is absent.
@@ -85,6 +98,18 @@ async function callV1(
   if (!r.ok) {
     return { content: [{ type: "text" as const, text: `HTTP ${r.status}: ${text}` }], isError: true };
   }
+  // structuredContent lets MCP clients validate/render against outputSchema.
+  // /v1 always returns JSON, but a defensive parse keeps a bad body from
+  // throwing instead of just falling back to text-only content.
+  if (def.outputSchema) {
+    try {
+      const parsed = JSON.parse(text);
+      const structuredContent = def.wrapArrayOutput ? { items: parsed } : parsed;
+      return { content: [{ type: "text" as const, text }], structuredContent };
+    } catch {
+      // fall through to text-only content below
+    }
+  }
   return { content: [{ type: "text" as const, text }] };
 }
 
@@ -104,6 +129,8 @@ export function buildServer(apiKey: string, apiBase: string): Server {
       name: t.name,
       description: t.description,
       inputSchema: inputSchema(t),
+      ...(t.outputSchema ? { outputSchema: t.outputSchema } : {}),
+      annotations: { title: t.description, ...READ_ONLY_ANNOTATIONS },
     })),
   }));
 
