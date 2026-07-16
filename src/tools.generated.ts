@@ -10,7 +10,33 @@ export const GENERATED_TOOLS: ToolDef[] = [
     "method": "GET",
     "args": [],
     "outputSchema": {
-      "$ref": "#/$defs/Ping",
+      "properties": {
+        "status": {
+          "type": "string",
+          "title": "Status"
+        },
+        "org_id": {
+          "type": "string",
+          "title": "Org Id"
+        },
+        "org_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Org Name"
+        }
+      },
+      "type": "object",
+      "required": [
+        "status",
+        "org_id"
+      ],
+      "title": "Ping",
       "$defs": {
         "Ping": {
           "properties": {
@@ -51,7 +77,47 @@ export const GENERATED_TOOLS: ToolDef[] = [
     "method": "GET",
     "args": [],
     "outputSchema": {
-      "$ref": "#/$defs/Me",
+      "properties": {
+        "org_id": {
+          "type": "string",
+          "title": "Org Id"
+        },
+        "org_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Org Name"
+        },
+        "org_slug": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Org Slug"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Scopes",
+          "default": []
+        }
+      },
+      "type": "object",
+      "required": [
+        "org_id"
+      ],
+      "title": "Me",
       "$defs": {
         "Me": {
           "properties": {
@@ -156,7 +222,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Session_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Session"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Session]",
       "$defs": {
         "Page_Session_": {
           "properties": {
@@ -411,7 +494,171 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Session",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "starts_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Starts At"
+        },
+        "ends_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ends At"
+        },
+        "duration_minutes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration Minutes"
+        },
+        "tutor_pay_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Pay Rate Cents"
+        },
+        "student_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Rate Cents"
+        },
+        "amount_owed_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Owed Cents"
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mode"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Completed At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Session",
       "$defs": {
         "Session": {
           "properties": {
@@ -598,7 +845,171 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Session",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "starts_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Starts At"
+        },
+        "ends_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ends At"
+        },
+        "duration_minutes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration Minutes"
+        },
+        "tutor_pay_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Pay Rate Cents"
+        },
+        "student_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Rate Cents"
+        },
+        "amount_owed_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Owed Cents"
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mode"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Completed At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Session",
       "$defs": {
         "Session": {
           "properties": {
@@ -800,7 +1211,171 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Session",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "starts_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Starts At"
+        },
+        "ends_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ends At"
+        },
+        "duration_minutes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration Minutes"
+        },
+        "tutor_pay_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Pay Rate Cents"
+        },
+        "student_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Rate Cents"
+        },
+        "amount_owed_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Owed Cents"
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mode"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Completed At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Session",
       "$defs": {
         "Session": {
           "properties": {
@@ -994,7 +1569,73 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/UserLookup",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First Name"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "account_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Account Type"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "UserLookup",
+      "description": "GET /v1/users — a user (staff or org-affiliated student/parent) matched by\nemail or phone. The lookup never leaks cross-org existence (404 otherwise).",
       "$defs": {
         "UserLookup": {
           "properties": {
@@ -1075,7 +1716,22 @@ export const GENERATED_TOOLS: ToolDef[] = [
     "method": "POST",
     "args": [],
     "outputSchema": {
-      "$ref": "#/$defs/BulkInviteResponse",
+      "properties": {
+        "results": {
+          "items": {
+            "$ref": "#/$defs/BulkInviteResultItem"
+          },
+          "type": "array",
+          "title": "Results",
+          "default": []
+        },
+        "summary": {
+          "$ref": "#/$defs/BulkInviteSummary"
+        }
+      },
+      "type": "object",
+      "title": "BulkInviteResponse",
+      "description": "POST /v1/users/bulk-invite response — `results` is per-row (same order as the\nrequest) and `summary` rolls up the counts.",
       "$defs": {
         "BulkInviteResponse": {
           "properties": {
@@ -1229,7 +1885,91 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Student",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First Name"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "placeholder_email": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Placeholder Email"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "parent_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Parent Ids",
+          "default": []
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Student",
       "$defs": {
         "Student": {
           "properties": {
@@ -1336,7 +2076,91 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Student",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First Name"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "placeholder_email": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Placeholder Email"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "parent_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Parent Ids",
+          "default": []
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Student",
       "$defs": {
         "Student": {
           "properties": {
@@ -1443,7 +2267,34 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/ParentStudentLink",
+      "properties": {
+        "parent_id": {
+          "type": "string",
+          "title": "Parent Id"
+        },
+        "student_id": {
+          "type": "string",
+          "title": "Student Id"
+        },
+        "linked_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Linked At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "parent_id",
+        "student_id"
+      ],
+      "title": "ParentStudentLink",
+      "description": "A parent<->student link (parent_student_links).",
       "$defs": {
         "ParentStudentLink": {
           "properties": {
@@ -1493,7 +2344,171 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Session",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "starts_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Starts At"
+        },
+        "ends_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Ends At"
+        },
+        "duration_minutes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Duration Minutes"
+        },
+        "tutor_pay_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Pay Rate Cents"
+        },
+        "student_rate_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Rate Cents"
+        },
+        "amount_owed_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Owed Cents"
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mode"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Completed At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Session",
       "$defs": {
         "Session": {
           "properties": {
@@ -1694,7 +2709,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Tutor_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Tutor"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Tutor]",
       "$defs": {
         "Page_Tutor_": {
           "properties": {
@@ -2064,7 +3096,286 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Tutor",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First Name"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Name"
+        },
+        "full_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Full Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "placeholder_email": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Placeholder Email"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Role"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Bio"
+        },
+        "teaching_mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Teaching Mode"
+        },
+        "is_published": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Published"
+        },
+        "avatar_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Avatar Url"
+        },
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Handle"
+        },
+        "subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Subjects"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "home_suburb": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Suburb"
+        },
+        "home_postcode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Postcode"
+        },
+        "home_lat": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Lat"
+        },
+        "home_lng": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Lng"
+        },
+        "service_postcodes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Service Postcodes",
+          "default": []
+        },
+        "serves_all_areas": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Serves All Areas"
+        },
+        "max_travel_km": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Max Travel Km"
+        },
+        "in_person_arrangements": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "In Person Arrangements",
+          "default": []
+        },
+        "tutor_subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Tutor Subjects",
+          "default": []
+        },
+        "specialisations": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Specialisations"
+        },
+        "distance_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Distance Km"
+        },
+        "covers_area": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Covers Area"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Tutor",
       "$defs": {
         "Tutor": {
           "properties": {
@@ -2366,7 +3677,286 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Tutor",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First Name"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Name"
+        },
+        "full_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Full Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "placeholder_email": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Placeholder Email"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Role"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Bio"
+        },
+        "teaching_mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Teaching Mode"
+        },
+        "is_published": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Published"
+        },
+        "avatar_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Avatar Url"
+        },
+        "handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Handle"
+        },
+        "subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Subjects"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "home_suburb": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Suburb"
+        },
+        "home_postcode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Postcode"
+        },
+        "home_lat": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Lat"
+        },
+        "home_lng": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Home Lng"
+        },
+        "service_postcodes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Service Postcodes",
+          "default": []
+        },
+        "serves_all_areas": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Serves All Areas"
+        },
+        "max_travel_km": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Max Travel Km"
+        },
+        "in_person_arrangements": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "In Person Arrangements",
+          "default": []
+        },
+        "tutor_subjects": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Tutor Subjects",
+          "default": []
+        },
+        "specialisations": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Specialisations"
+        },
+        "distance_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Distance Km"
+        },
+        "covers_area": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Covers Area"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Tutor",
       "$defs": {
         "Tutor": {
           "properties": {
@@ -2689,7 +4279,41 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/AvailableSlots",
+      "properties": {
+        "tutor_id": {
+          "type": "string",
+          "title": "Tutor Id"
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "title": "Duration Minutes"
+        },
+        "from_date": {
+          "type": "string",
+          "title": "From Date"
+        },
+        "to_date": {
+          "type": "string",
+          "title": "To Date"
+        },
+        "slots": {
+          "items": {
+            "$ref": "#/$defs/AvailableSlot"
+          },
+          "type": "array",
+          "title": "Slots",
+          "default": []
+        }
+      },
+      "type": "object",
+      "required": [
+        "tutor_id",
+        "duration_minutes",
+        "from_date",
+        "to_date"
+      ],
+      "title": "AvailableSlots",
+      "description": "GET /v1/tutors/{tutor_id}/available-slots — free slots in the window, computed\nby subtracting scheduled sessions from the tutor's weekly availability rules.",
       "$defs": {
         "AvailableSlots": {
           "properties": {
@@ -2765,7 +4389,71 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/OffboardResult",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "title": "Success",
+          "default": true
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scope"
+        },
+        "archived_relationships": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Archived Relationships"
+        },
+        "classrooms_removed": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Classrooms Removed"
+        },
+        "coverage_revoked": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Coverage Revoked"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reason"
+        }
+      },
+      "type": "object",
+      "title": "OffboardResult",
+      "description": "Result of POST /v1/students/{id}/offboard — moves a student to the soft,\nread-only 'alumni' tier. The student keeps their account and their own past\nwork, loses org-provided premium/AI access, and can request to resume. Counts\nreflect what the bundling RPC changed; `reason` is set only on failure.",
       "$defs": {
         "OffboardResult": {
           "properties": {
@@ -2866,7 +4554,59 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/TutorEarnings",
+      "properties": {
+        "tutor_id": {
+          "type": "string",
+          "title": "Tutor Id"
+        },
+        "sessions_count": {
+          "type": "integer",
+          "title": "Sessions Count",
+          "default": 0
+        },
+        "period_start": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Period Start"
+        },
+        "period_end": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Period End"
+        },
+        "earned_cents": {
+          "type": "integer",
+          "title": "Earned Cents",
+          "default": 0
+        },
+        "paid_out_cents": {
+          "type": "integer",
+          "title": "Paid Out Cents",
+          "default": 0
+        },
+        "unpaid_cents": {
+          "type": "integer",
+          "title": "Unpaid Cents",
+          "default": 0
+        }
+      },
+      "type": "object",
+      "required": [
+        "tutor_id"
+      ],
+      "title": "TutorEarnings",
       "$defs": {
         "TutorEarnings": {
           "properties": {
@@ -2983,7 +4723,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Payment_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Payment"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Payment]",
       "$defs": {
         "Page_Payment_": {
           "properties": {
@@ -3194,7 +4951,127 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Payment",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Session Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "amount_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Cents"
+        },
+        "refund_amount_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Refund Amount Cents"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "payment_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Payment Type"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "stripe_payment_intent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Stripe Payment Intent Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Payment",
       "$defs": {
         "Payment": {
           "properties": {
@@ -3372,7 +5249,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Invoice_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Invoice"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Invoice]",
       "$defs": {
         "Page_Invoice_": {
           "properties": {
@@ -3667,7 +5561,146 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Invoice",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "invoice_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Invoice Number"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "amount_due_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Due Cents"
+        },
+        "amount_paid_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Paid Cents"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "due_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Due Date"
+        },
+        "sent_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sent At"
+        },
+        "paid_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Paid At"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "line_items": {
+          "items": {
+            "$ref": "#/$defs/LineItem"
+          },
+          "type": "array",
+          "title": "Line Items",
+          "default": []
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Invoice",
       "$defs": {
         "Invoice": {
           "properties": {
@@ -3908,7 +5941,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Student_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Student"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Student]",
       "$defs": {
         "Page_Student_": {
           "properties": {
@@ -4090,7 +6140,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Parent_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Parent"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Parent]",
       "$defs": {
         "Page_Parent_": {
           "properties": {
@@ -4265,7 +6332,91 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Parent",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "first_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "First Name"
+        },
+        "last_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Last Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "placeholder_email": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Placeholder Email"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "student_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Student Ids",
+          "default": []
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Parent",
       "$defs": {
         "Parent": {
           "properties": {
@@ -4372,7 +6523,37 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/ParentBalance",
+      "properties": {
+        "parent_id": {
+          "type": "string",
+          "title": "Parent Id"
+        },
+        "total_invoiced_cents": {
+          "type": "integer",
+          "title": "Total Invoiced Cents",
+          "default": 0
+        },
+        "total_paid_cents": {
+          "type": "integer",
+          "title": "Total Paid Cents",
+          "default": 0
+        },
+        "outstanding_cents": {
+          "type": "integer",
+          "title": "Outstanding Cents",
+          "default": 0
+        },
+        "open_invoices_count": {
+          "type": "integer",
+          "title": "Open Invoices Count",
+          "default": 0
+        }
+      },
+      "type": "object",
+      "required": [
+        "parent_id"
+      ],
+      "title": "ParentBalance",
       "$defs": {
         "ParentBalance": {
           "properties": {
@@ -4417,7 +6598,21 @@ export const GENERATED_TOOLS: ToolDef[] = [
     "method": "GET",
     "args": [],
     "outputSchema": {
-      "$ref": "#/$defs/SubjectList",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Subject"
+          },
+          "type": "array",
+          "title": "Data"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data"
+      ],
+      "title": "SubjectList",
+      "description": "`/v1/subjects` returns just `{ \"data\": [...] }` (no pagination).",
       "$defs": {
         "SubjectList": {
           "properties": {
@@ -4506,7 +6701,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_LessonPlan_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/LessonPlan"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[LessonPlan]",
       "$defs": {
         "Page_LessonPlan_": {
           "properties": {
@@ -4757,7 +6969,160 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/LessonPlan",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "created_by": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created By"
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scope"
+        },
+        "classroom_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Classroom Id"
+        },
+        "group_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Group Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Session Id"
+        },
+        "math_level_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Math Level Id"
+        },
+        "curriculum_level_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Curriculum Level Ids",
+          "default": []
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "plan_data": {
+          "$ref": "#/$defs/PlanData"
+        },
+        "scheduled_for": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scheduled For"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Updated At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "LessonPlan",
       "$defs": {
         "LessonPlan": {
           "properties": {
@@ -4968,7 +7333,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Homework_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Homework"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Homework]",
       "$defs": {
         "Page_Homework_": {
           "properties": {
@@ -5199,7 +7581,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Resource_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Resource"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Resource]",
       "$defs": {
         "Page_Resource_": {
           "properties": {
@@ -5442,7 +7841,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Question_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Question"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Question]",
       "$defs": {
         "Page_Question_": {
           "properties": {
@@ -5682,7 +8098,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_StudentGroup_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/StudentGroup"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[StudentGroup]",
       "$defs": {
         "Page_StudentGroup_": {
           "properties": {
@@ -5883,7 +8316,124 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/StudentGroup",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "classroom_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Classroom Id"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "rate_per_student_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rate Per Student Cents"
+        },
+        "color": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Color"
+        },
+        "avatar_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Avatar Url"
+        },
+        "student_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Student Ids",
+          "default": []
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Updated At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "StudentGroup",
       "$defs": {
         "StudentGroup": {
           "properties": {
@@ -6065,7 +8615,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Result_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Result"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Result]",
       "$defs": {
         "Page_Result_": {
           "properties": {
@@ -6258,7 +8825,116 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Result",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "grade": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Grade"
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mode"
+        },
+        "vce_exam_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Vce Exam Id"
+        },
+        "curriculum_level_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Curriculum Level Id"
+        },
+        "homework_assignment_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Homework Assignment Id"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Started At"
+        },
+        "completed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Completed At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Result",
       "$defs": {
         "Result": {
           "properties": {
@@ -6418,7 +9094,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_SessionFeedback_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/SessionFeedback"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[SessionFeedback]",
       "$defs": {
         "Page_SessionFeedback_": {
           "properties": {
@@ -6647,7 +9340,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_TutorReview_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/TutorReview"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[TutorReview]",
       "$defs": {
         "Page_TutorReview_": {
           "properties": {
@@ -6805,7 +9515,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Classroom_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Classroom"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Classroom]",
       "$defs": {
         "Page_Classroom_": {
           "properties": {
@@ -7005,7 +9732,116 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Classroom",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "join_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Join Code"
+        },
+        "price_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Price Cents"
+        },
+        "billing_interval": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Billing Interval"
+        },
+        "group_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Group Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Updated At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Classroom",
       "$defs": {
         "Classroom": {
           "properties": {
@@ -7144,7 +9980,21 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/MemberAddResult",
+      "properties": {
+        "member_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Member Id"
+        }
+      },
+      "type": "object",
+      "title": "MemberAddResult",
       "$defs": {
         "MemberAddResult": {
           "properties": {
@@ -7181,7 +10031,21 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/MemberAddResult",
+      "properties": {
+        "member_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Member Id"
+        }
+      },
+      "type": "object",
+      "title": "MemberAddResult",
       "$defs": {
         "MemberAddResult": {
           "properties": {
@@ -7218,7 +10082,21 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/MemberAddResult",
+      "properties": {
+        "member_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Member Id"
+        }
+      },
+      "type": "object",
+      "title": "MemberAddResult",
       "$defs": {
         "MemberAddResult": {
           "properties": {
@@ -7255,7 +10133,21 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/MemberAddResult",
+      "properties": {
+        "member_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Member Id"
+        }
+      },
+      "type": "object",
+      "title": "MemberAddResult",
       "$defs": {
         "MemberAddResult": {
           "properties": {
@@ -7327,7 +10219,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_MileageTrip_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/MileageTrip"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[MileageTrip]",
       "$defs": {
         "Page_MileageTrip_": {
           "properties": {
@@ -7606,7 +10515,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_ExpenseClaim_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/ExpenseClaim"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[ExpenseClaim]",
       "$defs": {
         "Page_ExpenseClaim_": {
           "properties": {
@@ -7856,7 +10782,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Adjustment_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Adjustment"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Adjustment]",
       "$defs": {
         "Page_Adjustment_": {
           "properties": {
@@ -8035,7 +10978,27 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/AccountInviteSent",
+      "properties": {
+        "sent": {
+          "type": "boolean",
+          "title": "Sent",
+          "default": false
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        }
+      },
+      "type": "object",
+      "title": "AccountInviteSent",
+      "description": "Result of POST /v1/students|parents/{id}/send-invite. `sent` is true when a set-password\nemail was dispatched; `email` is the address it went to.",
       "$defs": {
         "AccountInviteSent": {
           "properties": {
@@ -8078,7 +11041,27 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/AccountInviteSent",
+      "properties": {
+        "sent": {
+          "type": "boolean",
+          "title": "Sent",
+          "default": false
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        }
+      },
+      "type": "object",
+      "title": "AccountInviteSent",
+      "description": "Result of POST /v1/students|parents/{id}/send-invite. `sent` is true when a set-password\nemail was dispatched; `email` is the address it went to.",
       "$defs": {
         "AccountInviteSent": {
           "properties": {
@@ -8113,7 +11096,55 @@ export const GENERATED_TOOLS: ToolDef[] = [
     "method": "GET",
     "args": [],
     "outputSchema": {
-      "$ref": "#/$defs/OrgJoinLink",
+      "properties": {
+        "student_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Code"
+        },
+        "student_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Url"
+        },
+        "tutor_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Code"
+        },
+        "tutor_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Url"
+        }
+      },
+      "type": "object",
+      "title": "OrgJoinLink",
+      "description": "GET /v1/org/join-link — the org's reusable self-signup join links/codes (share via\nFacebook/Instagram/WhatsApp; no email needed from you). `student_*` adds the person as a\nstudent, `tutor_*` as a tutor. Codes are minted on first read if unset.",
       "$defs": {
         "OrgJoinLink": {
           "properties": {
@@ -8198,7 +11229,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Conversation_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Conversation"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Conversation]",
       "$defs": {
         "Page_Conversation_": {
           "properties": {
@@ -8413,7 +11461,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Message_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Message"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Message]",
       "$defs": {
         "Page_Message_": {
           "properties": {
@@ -8599,7 +11664,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_OrgInboxMessage_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/OrgInboxMessage"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[OrgInboxMessage]",
       "$defs": {
         "Page_OrgInboxMessage_": {
           "properties": {
@@ -8781,7 +11863,41 @@ export const GENERATED_TOOLS: ToolDef[] = [
     "method": "GET",
     "args": [],
     "outputSchema": {
-      "$ref": "#/$defs/Summary",
+      "properties": {
+        "active_tutors": {
+          "type": "integer",
+          "title": "Active Tutors",
+          "default": 0
+        },
+        "active_students": {
+          "type": "integer",
+          "title": "Active Students",
+          "default": 0
+        },
+        "sessions_today": {
+          "type": "integer",
+          "title": "Sessions Today",
+          "default": 0
+        },
+        "settled_this_week_cents": {
+          "type": "integer",
+          "title": "Settled This Week Cents",
+          "default": 0
+        },
+        "outstanding_cents": {
+          "type": "integer",
+          "title": "Outstanding Cents",
+          "default": 0
+        },
+        "pending_approvals": {
+          "$ref": "#/$defs/PendingApprovals"
+        }
+      },
+      "type": "object",
+      "required": [
+        "pending_approvals"
+      ],
+      "title": "Summary",
       "$defs": {
         "Summary": {
           "properties": {
@@ -8880,7 +11996,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_BookingRequest_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/BookingRequest"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[BookingRequest]",
       "$defs": {
         "Page_BookingRequest_": {
           "properties": {
@@ -9105,7 +12238,36 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/RecommendedTutors",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "title": "Request Id"
+        },
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/$defs/RecommendedTutor"
+          },
+          "type": "array",
+          "title": "Data"
+        }
+      },
+      "type": "object",
+      "required": [
+        "request_id",
+        "data"
+      ],
+      "title": "RecommendedTutors",
       "$defs": {
         "RecommendedTutors": {
           "properties": {
@@ -9324,7 +12486,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Tutor_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Tutor"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Tutor]",
       "$defs": {
         "Page_Tutor_": {
           "properties": {
@@ -9694,7 +12873,53 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/CoverageSummaryResult",
+      "properties": {
+        "subject_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject Id"
+        },
+        "postcode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Postcode"
+        },
+        "total": {
+          "type": "integer",
+          "title": "Total",
+          "default": 0
+        },
+        "in_person": {
+          "type": "integer",
+          "title": "In Person",
+          "default": 0
+        },
+        "online": {
+          "type": "integer",
+          "title": "Online",
+          "default": 0
+        },
+        "covering_area": {
+          "type": "integer",
+          "title": "Covering Area",
+          "default": 0
+        }
+      },
+      "type": "object",
+      "title": "CoverageSummaryResult",
+      "description": "Counts for /v1/coverage/summary. `covering_area` is the subset of `total`\nwithin reach of `postcode` (equals `total` when no postcode is supplied —\ngeography is then ignored). A tutor offering 'both' modes counts toward both\n`in_person` and `online`.",
       "$defs": {
         "CoverageSummaryResult": {
           "properties": {
@@ -9777,7 +13002,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_CoverageGapItem_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/CoverageGapItem"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[CoverageGapItem]",
       "$defs": {
         "Page_CoverageGapItem_": {
           "properties": {
@@ -9916,7 +13158,36 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/IsochroneRefreshResult",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enabled",
+          "default": false
+        },
+        "considered": {
+          "type": "integer",
+          "title": "Considered",
+          "default": 0
+        },
+        "computed": {
+          "type": "integer",
+          "title": "Computed",
+          "default": 0
+        },
+        "cached": {
+          "type": "integer",
+          "title": "Cached",
+          "default": 0
+        },
+        "failed": {
+          "type": "integer",
+          "title": "Failed",
+          "default": 0
+        }
+      },
+      "type": "object",
+      "title": "IsochroneRefreshResult",
+      "description": "Outcome of POST /v1/coverage/isochrones/refresh. `enabled` is false when no\nMAPBOX_TOKEN is configured (nothing was computed; the map uses radius circles).\n`computed` were fetched from Mapbox, `cached` were already fresh (skip-guard),\n`failed` errored, `considered` is how many in-person tutors were in scope.",
       "$defs": {
         "IsochroneRefreshResult": {
           "properties": {
@@ -10003,7 +13274,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_LessonParticipant_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/LessonParticipant"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[LessonParticipant]",
       "$defs": {
         "Page_LessonParticipant_": {
           "properties": {
@@ -10186,7 +13474,106 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/LessonParticipant",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Session Id"
+        },
+        "student_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Student Id"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "attendance": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Attendance"
+        },
+        "cancelled_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cancelled At"
+        },
+        "invited_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Invited At"
+        },
+        "responded_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Responded At"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "LessonParticipant",
+      "description": "A per-student attendance row on a (group/classroom) session. Billing-state\nfields (rate_snapshot_cents, settlement_state, stripe_payment_id,\nreported_payment_method) are deliberately NOT exposed.",
       "$defs": {
         "LessonParticipant": {
           "properties": {
@@ -10329,7 +13716,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Availability_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Availability"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Availability]",
       "$defs": {
         "Page_Availability_": {
           "properties": {
@@ -10501,7 +13905,95 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Availability",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "day_of_week": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Day Of Week"
+        },
+        "start_time": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Start Time"
+        },
+        "end_time": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "End Time"
+        },
+        "timezone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Timezone"
+        },
+        "schedule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Schedule Id"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Availability",
+      "description": "A tutor's recurring weekly availability rule. `day_of_week` is 0–6 (Sunday=0).",
       "$defs": {
         "Availability": {
           "properties": {
@@ -10640,7 +14132,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Location_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Location"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Location]",
       "$defs": {
         "Page_Location_": {
           "properties": {
@@ -10823,7 +14332,106 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Location",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "owner_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Owner Type"
+        },
+        "owner_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Owner Id"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Label"
+        },
+        "suburb": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Suburb"
+        },
+        "state": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "State"
+        },
+        "postcode": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Postcode"
+        },
+        "is_default": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Default"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Location",
+      "description": "A saved location owned by the org, one of its tutors, or one of its\nstudents. `owner_type` is resolved from whichever owner column is set.",
       "$defs": {
         "Location": {
           "properties": {
@@ -10973,7 +14581,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Payout_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Payout"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Payout]",
       "$defs": {
         "Page_Payout_": {
           "properties": {
@@ -11145,7 +14770,95 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Payout",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Tutor Id"
+        },
+        "session_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Session Id"
+        },
+        "amount_cents": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Cents"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "is_group": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Group"
+        },
+        "paid_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Paid At"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Payout",
+      "description": "A completed tutor payout (wage-payment ledger). Notification-plumbing\ncolumns (ledger_id, digest_sent_at, immediate_sent_at) are not exposed; the\ntable carries no bank fields.",
       "$defs": {
         "Payout": {
           "properties": {
@@ -11298,7 +15011,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_RateCell_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/RateCell"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[RateCell]",
       "$defs": {
         "Page_RateCell_": {
           "properties": {
@@ -11510,7 +15240,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_RateBand_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/RateBand"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[RateBand]",
       "$defs": {
         "Page_RateBand_": {
           "properties": {
@@ -11645,7 +15392,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_TutorTier_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/TutorTier"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[TutorTier]",
       "$defs": {
         "Page_TutorTier_": {
           "properties": {
@@ -11830,7 +15594,24 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Page_Lead_",
+      "properties": {
+        "data": {
+          "items": {
+            "$ref": "#/$defs/Lead"
+          },
+          "type": "array",
+          "title": "Data"
+        },
+        "meta": {
+          "$ref": "#/$defs/PageMeta"
+        }
+      },
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "title": "Page[Lead]",
       "$defs": {
         "Page_Lead_": {
           "properties": {
@@ -12075,7 +15856,161 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/Lead",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "form_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Form Id"
+        },
+        "source_form_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Form Name"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Email"
+        },
+        "phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Phone"
+        },
+        "subject": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subject"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "assigned_tutor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Assigned Tutor Id"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Url"
+        },
+        "notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Notes"
+        },
+        "converted_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Converted At"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Updated At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "Lead",
+      "description": "An inbound lead captured by an org lead form. The free-form `payload` is\nNOT exposed; only a safe subset (name/email/phone/subject) is flattened.",
       "$defs": {
         "Lead": {
           "properties": {
@@ -12551,7 +16486,235 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/BlogPost",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Target"
+        },
+        "brand": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Brand"
+        },
+        "organization_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Organization Id"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "slug": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Slug"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "excerpt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Excerpt"
+        },
+        "content": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Content"
+        },
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Author"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Tags",
+          "default": []
+        },
+        "featured_image": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Featured Image"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Category"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Date"
+        },
+        "publish_to_website": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Publish To Website"
+        },
+        "publish_to_portal": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Publish To Portal"
+        },
+        "is_pinned": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Pinned"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Published At"
+        },
+        "scheduled_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scheduled At"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Updated At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "BlogPost",
+      "description": "A blog post row returned by /v1/blog-posts. `target` is derived from\norganization_id (NULL → 'platform', else 'org').",
       "$defs": {
         "BlogPost": {
           "properties": {
@@ -12817,7 +16980,235 @@ export const GENERATED_TOOLS: ToolDef[] = [
       }
     ],
     "outputSchema": {
-      "$ref": "#/$defs/BlogPost",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Target"
+        },
+        "brand": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Brand"
+        },
+        "organization_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Organization Id"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Title"
+        },
+        "slug": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Slug"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Status"
+        },
+        "excerpt": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Excerpt"
+        },
+        "content": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Content"
+        },
+        "author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Author"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Tags",
+          "default": []
+        },
+        "featured_image": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Featured Image"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Category"
+        },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Date"
+        },
+        "publish_to_website": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Publish To Website"
+        },
+        "publish_to_portal": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Publish To Portal"
+        },
+        "is_pinned": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Pinned"
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Published At"
+        },
+        "scheduled_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scheduled At"
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Created At"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Updated At"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "title": "BlogPost",
+      "description": "A blog post row returned by /v1/blog-posts. `target` is derived from\norganization_id (NULL → 'platform', else 'org').",
       "$defs": {
         "BlogPost": {
           "properties": {

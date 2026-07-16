@@ -55,7 +55,7 @@ function buildOutputSchema(op) {
   const componentSchemas = spec.components?.schemas || {};
   const defs = {};
   const rootUsed = new Set();
-  const rewritten = rewriteRefs(raw, rootUsed);
+  let schema = rewriteRefs(raw, rootUsed);
 
   const queue = [...rootUsed];
   while (queue.length) {
@@ -66,7 +66,15 @@ function buildOutputSchema(op) {
     for (const n of nestedUsed) if (!defs[n]) queue.push(n);
   }
 
-  let schema = rewritten;
+  // A response schema that's just `{"$ref": "#/components/schemas/Foo"}` (the
+  // common FastAPI case for single-object responses) can't be the outputSchema
+  // root as-is — MCP requires an object-typed root schema, not a bare $ref.
+  // Inline the referenced schema at the root instead of leaving $ref there.
+  if (schema.$ref) {
+    const name = schema.$ref.split("/").pop();
+    if (defs[name]) schema = { ...defs[name] };
+  }
+
   let wrapArrayOutput = false;
   if (schema.type === "array") {
     // structuredContent must be a JSON object, not a bare array — wrap it.
