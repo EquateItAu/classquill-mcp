@@ -1,5 +1,7 @@
 # ClassQuill MCP server
 
+[![smithery badge](https://smithery.ai/badge/collisbrandon02/classquill)](https://smithery.ai/servers/collisbrandon02/classquill)
+
 Give any MCP-aware AI tool — **Claude, Codex, Cursor, Windsurf, Composio, and more** —
 read access to your **ClassQuill** tutoring-business data: sessions, students, tutors,
 parents, invoices, payments, lesson plans, bookings, earnings, and reports.
