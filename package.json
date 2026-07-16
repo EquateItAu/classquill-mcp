@@ -1,6 +1,6 @@
 {
   "name": "equateit-mcp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "mcpName": "io.github.EquateItAu/classquill-mcp",
   "type": "module",
   "description": "EquateIt MCP server — read-only access to your org's tutoring data (sessions, invoices, students, earnings…) via the EquateIt public API.",
